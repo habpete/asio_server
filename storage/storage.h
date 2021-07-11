@@ -1,6 +1,8 @@
 #ifndef _STORAGE_H_
 #define _STORAGE_H_
 
+#include "decls.h"
+
 enum DB_Type {
     eNone = 0,
     ePG,
@@ -9,9 +11,9 @@ enum DB_Type {
 class DB_Transaction {
 public:
     virtual ~DB_Transaction();
-    virtual void Start();
-    virtual void Finish();
-    virtual void Cancel();
+    virtual ErrorMsg Start();
+    virtual ErrorMsg Finish();
+    virtual ErrorMsg Cancel();
 };
 
 DB_Transaction* NewTransaction(DB_Type type);
